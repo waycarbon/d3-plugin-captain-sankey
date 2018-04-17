@@ -164,7 +164,7 @@ d3.sankey = function() {
         (position, point, index) => (point.includes(node.name))
           ? index
           : position,
-        0) || node.x
+        0) || node.x;
     });
   }
 
