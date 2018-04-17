@@ -5,6 +5,7 @@ d3.sankey = function() {
       size = [1, 1],
       nodes = [],
       links = [],
+      topology = [],
       sinksRight = true;
 
   sankey.nodeWidth = function(_) {
@@ -28,6 +29,12 @@ d3.sankey = function() {
   sankey.links = function(_) {
     if (!arguments.length) return links;
     links = _;
+    return sankey;
+  };
+
+  sankey.topology = function(_) {
+    if (!arguments.length) return topology;
+    topology = _;
     return sankey;
   };
 
@@ -139,12 +146,26 @@ d3.sankey = function() {
       ++x;
     }
 
+    if (topology.length > 0) {
+      checkBreadthsAgainstTopology();
+    }
+
     // Optionally move pure sinks always to the right.
     if (sinksRight) {
       moveSinksRight(x);
     }
 
     scaleNodeBreadths((size[0] - nodeWidth) / (x - 1));
+  }
+
+  function checkBreadthsAgainstTopology () {
+    nodes.forEach((node) => {
+      node.x = topology.reduce(
+        (position, point, index) => (point.includes(node.name))
+          ? index
+          : position,
+        0) || node.x
+    });
   }
 
   function moveSourcesRight() {
