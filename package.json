@@ -1,0 +1,22 @@
+{
+  "name": "d3-plugin-captain-sankey",
+  "version": "1.0.0",
+  "description": "Sankey utilities for D3.js",
+  "main": "sankey.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/waycarbon/d3-plugin-captain-sankey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waycarbon/d3-plugin-captain-sankey/issues"
+  },
+  "homepage": "https://github.com/waycarbon/d3-plugin-captain-sankey#readme"
+}
